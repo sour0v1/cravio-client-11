@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import './Navbar.css'
 import { SlMenu } from "react-icons/sl";
 import { useState } from "react";
+import { RxCross1 } from "react-icons/rx";
 // ${!open ? 'left-[400px]': 'left-[800px]'}
 const Navbar = () => {
     const [open, setOpen] = useState(true);
@@ -21,7 +22,7 @@ const Navbar = () => {
                 <NavLink to={'/login'}>Log In</NavLink>
                 <NavLink to={'/signup'}>Sign Up</NavLink>
             </div>
-            <button onClick={handleClassName} className="lg:hidden text-xl"><SlMenu /></button>
+            <button onClick={handleClassName} className="lg:hidden text-2xl">{open ? <SlMenu /> : <RxCross1 />}</button>
         </div>
     );
 };

@@ -1,3 +1,9 @@
 #nav a.active{
     text-decoration: underline;
 }
+#nav a:hover{
+    text-decoration: underline;
+}
+#nav a{
+    width: fit-content;
+}
