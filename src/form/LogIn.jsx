@@ -5,7 +5,7 @@ import { FaGithub } from "react-icons/fa";
 
 const LogIn = () => {
     return (
-        <div className='bg-cover bg-center h-screen py-9 flex justify-center items-center' style={{ backgroundImage: `url(${backImage})` }}>
+        <div className='bg-cover bg-center py-9 flex justify-center items-center' style={{ backgroundImage: `url(${backImage})` }}>
             <div className='bg-[#F9EFDB] h-fit w-2/3 md:w-2/3 lg:w-1/3 mx-auto py-6 font-poppins rounded shadow-md gap-3'>
 
                 <form className='w-full flex flex-col justify-center items-center gap-3'>
