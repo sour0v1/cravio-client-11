@@ -1,18 +1,35 @@
-import { signInWithPopup } from "firebase/auth";
-import { createContext, useState } from "react";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithPopup } from "firebase/auth";
+import { createContext, useEffect, useState } from "react";
 import auth from "../firebase/firebase.config";
 
 export const AuthContext = createContext(null);
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    // google sign in
-    const googleSignIn = provider =>{
-       return signInWithPopup(auth, provider);
+    // create user by email and password
+    const createUser = (email, password) => {
+        return createUserWithEmailAndPassword(auth, email, password);
     }
-
+    // google sign in
+    const googleSignIn = provider => {
+        return signInWithPopup(auth, provider);
+    }
+    // github sign in
+    const githubSignIn = provider => {
+        return signInWithPopup(auth, provider);
+    }
+    // get currently signIn user
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            console.log('current signed in user', currentUser);
+            setUser(currentUser)
+        })
+        return () => unsubscribe();
+    }, [])
     const authInfo = {
         user,
-        googleSignIn
+        googleSignIn,
+        createUser,
+        githubSignIn
 
     }
     return (
