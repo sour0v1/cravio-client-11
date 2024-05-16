@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import backImage from '../assets/bg-1.jpg'
 
 const SignUp = () => {
@@ -10,18 +11,20 @@ const SignUp = () => {
                 </div>
                 <div className='flex flex-col gap-2 w-2/3'>
                     <label htmlFor="email">Email</label>
-                    <input className='border py-2 px-3 outline-[#FF9130]' type="email" name="email" id="" />
+                    <input className='border py-2 px-3 outline-[#FF9130]' type="email" name="email" id="" required/>
                 </div>
                 <div className='flex flex-col gap-2 w-2/3'>
                     <label htmlFor="password">Password</label>
-                    <input className='border py-2 px-3 outline-[#FF9130]' type="password" name="password" id="" />
+                    <input className='border py-2 px-3 outline-[#FF9130]' type="password" name="password" id="" required/>
                 </div>
                 <div className='flex flex-col gap-2 w-2/3'>
                     <label htmlFor="url">Photo URL</label>
                     <input className='border py-2 px-3 outline-[#FF9130]' type="text" name="url" id="" />
                 </div>
-                <button className='w-2/3 my-2 text-white rounded py-2 bg-[#FF9130]'>Sign Up</button>
+                <input className='w-2/3 my-2 text-white rounded py-2 bg-[#FF9130]' type="submit" value={'Sign Up'} name="" id="" />
+                <p>Already signed up? <Link className='underline' to={'/login'}>Log In</Link></p>
             </form>
+
         </div>
     );
 };

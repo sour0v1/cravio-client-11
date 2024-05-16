@@ -3,7 +3,7 @@ import './Navbar.css'
 
 const Navbar = () => {
     return (
-        <div className="flex justify-between items-center bg-[#FECDA6] py-6 px-6">
+        <div className="flex justify-between items-center bg-[#FECDA6] py-6 px-6 border-b-2 border-[#112A46]">
             <h2 className="font-poppins text-4xl font-bold">Cravio</h2>
             <div id="nav" className="flex justify-center items-center gap-6 text-[#112A46] font-poppins">
                 <NavLink to={'/'}>Home</NavLink>
