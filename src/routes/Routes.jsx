@@ -4,6 +4,9 @@ import Home from "../pages/home/Home";
 import AvailableFoods from "../pages/AvailableFoods";
 import LogIn from "../form/LogIn";
 import SignUp from "../form/SignUp";
+import AddFood from "../pages/AddFood";
+import ManageFood from "../pages/ManageFood";
+import FoodRequest from "../pages/FoodRequest";
 
 
 const router = createBrowserRouter([
@@ -26,6 +29,18 @@ const router = createBrowserRouter([
             {
                 path : '/signup',
                 element : <SignUp></SignUp>
+            },
+            {
+                path : '/add-food',
+                element : <AddFood></AddFood>
+            },
+            {
+                path : '/manage-food',
+                element : <ManageFood></ManageFood>
+            },
+            {
+                path : '/food-request',
+                element : <FoodRequest></FoodRequest>
             }
         ]
     },
