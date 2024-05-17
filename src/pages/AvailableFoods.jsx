@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import AvailableFoodCard from './AvailableFoodCard';
-import { data } from 'autoprefixer';
 
 const AvailableFoods = () => {
     const [foodData, setFoodData] = useState([]);
+    // console.log([...foodData])
+    const [copyFood, setCopyFood] = useState([]);
+    console.log(copyFood)
     useEffect(() => {
         fetch(`http://localhost:5000/available-foods?availability=available`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
                 setFoodData(data);
+                setCopyFood([...data])
             })
     }, [])
     const handleSearch = e => {
@@ -18,11 +21,10 @@ const AvailableFoods = () => {
         const form = e.target;
         const searchValue = form.search.value;
         console.log(searchValue);
-
         const matchFood = foodData.filter(food => food.foodName.toLowerCase().includes(searchValue.toLowerCase()))
         console.log(matchFood);
-        matchFood == [] ?
-            setFoodData(matchFood) : setFoodData(null);
+        matchFood.length == 0 ?
+            setCopyFood(null):setCopyFood(matchFood)
     }
     // const foodData = useLoaderData();
     // console.log(foodData);
@@ -46,9 +48,9 @@ const AvailableFoods = () => {
                 </div>
             </div>
             {
-                foodData ? <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6 mx-6 lg:mx-0'>
+                copyFood ? <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6 mx-6 lg:mx-0'>
                     {
-                        foodData?.map(food => <AvailableFoodCard food={food} key={food._id}></AvailableFoodCard>)
+                        copyFood?.map(food => <AvailableFoodCard food={food} key={food._id}></AvailableFoodCard>)
                     }
                 </div> : <p className='text-red-600'>Could not match with any food you have searched for</p>
             }
