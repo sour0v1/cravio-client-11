@@ -35,7 +35,7 @@ const SignUp = () => {
     }
     return (
         <div className='bg-cover bg-center py-9 border-[#FF9130] border-y-2' style={{ backgroundImage: `url(${backImage})` }}>
-            <form onSubmit={handleSignUp} className='bg-[#F9EFDB] h-full w-2/3 md:w-2/3 lg:w-1/3 mx-auto flex flex-col justify-center items-center py-6 font-poppins rounded shadow-md gap-3'>
+            <form onSubmit={handleSignUp} className='bg-[#F9EFDB] h-full w-3/4 md:w-2/3 lg:w-1/3 mx-auto flex flex-col justify-center items-center py-6 font-poppins rounded shadow-md gap-3'>
                 <div className='flex flex-col gap-2 w-2/3'>
                     <label htmlFor="name">Name</label>
                     <input className='border py-2 px-3 outline-[#FF9130]' type="text" name="name" id="name" />

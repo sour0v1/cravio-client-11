@@ -4,6 +4,9 @@
 #nav a:hover{
     text-decoration: underline;
 }
+#nav button:hover{
+    text-decoration: underline;
+}
 #nav a{
     width: fit-content;
 }

@@ -7,6 +7,7 @@ import SignUp from "../form/SignUp";
 import AddFood from "../pages/AddFood";
 import ManageFood from "../pages/ManageFood";
 import FoodRequest from "../pages/FoodRequest";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -19,8 +20,9 @@ const router = createBrowserRouter([
                 element : <Home></Home>
             },
             {
-                path : 'available-foods',
-                element : <AvailableFoods></AvailableFoods>
+                path : '/available-foods',
+                element : <AvailableFoods></AvailableFoods>,
+                loader : () => fetch(`http://localhost:5000/available-foods?availability=available`)
             },
             {
                 path : '/login',
@@ -32,7 +34,7 @@ const router = createBrowserRouter([
             },
             {
                 path : '/add-food',
-                element : <AddFood></AddFood>
+                element : <PrivateRoute><AddFood></AddFood></PrivateRoute>
             },
             {
                 path : '/manage-food',
