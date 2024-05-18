@@ -1,11 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import AvailableFoodCard from './AvailableFoodCard';
+import dayjs from 'dayjs';
+import { AuthContext } from '../provider/AuthProvider';
 
 const AvailableFoods = () => {
+    const { loading } = useContext(AuthContext);
+    // state
     const [foodData, setFoodData] = useState([]);
-    // console.log([...foodData])
     const [copyFood, setCopyFood] = useState([]);
+    const [selectedValue, setSelectedValue] = useState(null);
+
     console.log(copyFood)
     useEffect(() => {
         fetch(`http://localhost:5000/available-foods?availability=available`)
@@ -13,9 +18,10 @@ const AvailableFoods = () => {
             .then(data => {
                 console.log(data);
                 setFoodData(data);
-                setCopyFood([...data])
+                setCopyFood([...data]);
             })
     }, [])
+    // search functionality
     const handleSearch = e => {
         e.preventDefault();
         const form = e.target;
@@ -24,10 +30,21 @@ const AvailableFoods = () => {
         const matchFood = foodData.filter(food => food.foodName.toLowerCase().includes(searchValue.toLowerCase()))
         console.log(matchFood);
         matchFood.length == 0 ?
-            setCopyFood(null):setCopyFood(matchFood)
+            setCopyFood(null) : setCopyFood(matchFood)
     }
-    // const foodData = useLoaderData();
-    // console.log(foodData);
+    // Sort functionality
+    const handleSort = e => {
+        e.preventDefault();
+        const form = e.target;
+        const sortValue = form.value;
+        console.log(sortValue);
+        // sort by today
+        if (sortValue === 'today') {
+            const sortTodayFood = foodData.filter(food => dayjs(food.date).format('MM-DD') === dayjs().format('MM-DD'))
+            console.log(sortTodayFood);
+            setCopyFood(sortTodayFood);
+        }
+    }
     return (
         <div className='max-w-6xl mx-auto my-12'>
             <h1 className='text-center text-2xl font-bold'>Available Foods</h1>
@@ -39,11 +56,11 @@ const AvailableFoods = () => {
                 <div className='flex justify-center items-center gap-3'>
                     <p>Filter By : </p>
 
-                    <select className='border-2 border-gray-200 py-2 rounded' name="" id="">
+                    <select onChange={handleSort} className='border-2 border-gray-200 py-2 rounded' name="" id="">
                         <option value="all">All</option>
-                        <option value="">Today</option>
-                        <option value="">This Week</option>
-                        <option value="">This Month</option>
+                        <option value="today">Today</option>
+                        <option value="week">This Week</option>
+                        <option value="month">This Month</option>
                     </select>
                 </div>
             </div>
