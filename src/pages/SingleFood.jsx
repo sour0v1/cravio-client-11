@@ -1,4 +1,4 @@
-
+import { RxCross2 } from "react-icons/rx";
 import { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
@@ -19,6 +19,7 @@ const SingleFood = () => {
         const foodDetails = {
             requestDate: dayjs().format('DD-MM-YYYY'),
             donatorName,
+            donatorEmail,
             pickupLocation: location,
             expiredDate: date,
             additionalNotes: notes
@@ -53,7 +54,7 @@ const SingleFood = () => {
     }
     return (
         <div className='w-2/3 mx-auto border my-9 font-poppins'>
-            <img className='w-full h-[400px]' src={foodImg} alt="food-image" />
+            <img className='w-full h-[200px] lg:h-[400px]' src={foodImg} alt="food-image" />
             <h2 className='flex justify-end my-1'>Donated By <span className='underline mx-1 font-medium'>  {donatorName}</span></h2>
             <div className='space-y-3 px-3 my-6'>
                 <h2 className='text-2xl font-medium'>{foodName}</h2>
@@ -64,61 +65,61 @@ const SingleFood = () => {
                     <button className="btn" onClick={() => document.getElementById('my_modal_4').showModal()}>Request</button>
                     {
                         added && <dialog id="my_modal_4" className='modal'>
-                        <div className="modal-box w-fit text-center mx-auto bg-[#FECDA6]">
-                            {/* <h3 className="font-bold text-lg">Hello!</h3>
+                            <div className="modal-box w-fit text-center mx-auto bg-[#FECDA6]">
+                                {/* <h3 className="font-bold text-lg">Hello!</h3>
                             <p className="py-4">Click the button below to close</p> */}
-                            <form onSubmit={handleSingleFood} className='bg-[#FECDA6] w-full mx-auto px-9 py-4 grid grid-cols-2 gap-3 font-poppins'>
-                                <div className='flex flex-col gap-2'>
-                                    <label className='text-left' htmlFor="foodName">Food Name</label>
-                                    <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="foodName" id="foodName" defaultValue={foodName} disabled />
+                                <div className="w-full flex justify-end items-center">
+                                    <form method="dialog">
+                                        {/* if there is a button, it will close the modal */}
+                                        <button className="text-2xl"><RxCross2 /></button>
+                                    </form>
                                 </div>
-                                <div className='flex flex-col gap-2'>
-                                    <label className='text-left' htmlFor="foodImage">Food Image Url</label>
-                                    <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="foodImage" id="foodImage" defaultValue={foodImg} disabled />
-                                </div>
-                                <div className='flex flex-col gap-2'>
-                                    <label className='text-left' htmlFor="foodQuantity">Food Quantity</label>
-                                    <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="foodQuantity" id="foodQuantity" defaultValue={foodQuantity} disabled />
-                                </div>
-                                <div className='flex flex-col gap-2'>
-                                    <label className='text-left' htmlFor="location">Pickup Location</label>
-                                    <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="location" id="location" defaultValue={location} disabled />
-                                </div>
-                                <div className='flex flex-col gap-2'>
-                                    <label className='text-left' htmlFor="date">Expired Date</label>
-                                    <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="date" name="date" id="date" defaultValue={date} disabled />
-                                </div>
-                                {/* <div className='flex flex-col gap-2'>
+                                <form onSubmit={handleSingleFood} className='bg-[#FECDA6] w-full mx-auto px-9 py-4 grid grid-cols-2 gap-3 font-poppins'>
+                                    <div className='flex flex-col gap-2'>
+                                        <label className='text-left' htmlFor="foodName">Food Name</label>
+                                        <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="foodName" id="foodName" defaultValue={foodName} disabled />
+                                    </div>
+                                    <div className='flex flex-col gap-2'>
+                                        <label className='text-left' htmlFor="foodImage">Food Image Url</label>
+                                        <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="foodImage" id="foodImage" defaultValue={foodImg} disabled />
+                                    </div>
+                                    <div className='flex flex-col gap-2'>
+                                        <label className='text-left' htmlFor="foodQuantity">Food Quantity</label>
+                                        <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="foodQuantity" id="foodQuantity" defaultValue={foodQuantity} disabled />
+                                    </div>
+                                    <div className='flex flex-col gap-2'>
+                                        <label className='text-left' htmlFor="location">Pickup Location</label>
+                                        <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="location" id="location" defaultValue={location} disabled />
+                                    </div>
+                                    <div className='flex flex-col gap-2'>
+                                        <label className='text-left' htmlFor="date">Expired Date</label>
+                                        <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="date" name="date" id="date" defaultValue={date} disabled />
+                                    </div>
+                                    {/* <div className='flex flex-col gap-2'>
                                     <label htmlFor="status">Food Status</label>
                                     <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="status" id="status" defaultValue={'available'} />
                                 </div> */}
-                                <div className='flex flex-col gap-2'>
-                                    <label className='text-left' htmlFor="donatorName">Donator Name</label>
-                                    <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="donatorName" id="donatorName" defaultValue={user?.displayName} disabled />
-                                </div>
-                                <div className='flex flex-col gap-2'>
-                                    <label className='text-left' htmlFor="donatorEmail">Donator Email</label>
-                                    <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="donatorEmail" id="donatorEmail" defaultValue={user?.email} disabled />
-                                </div>
-                                <div className='flex flex-col gap-2'>
-                                    <label className='text-left' htmlFor="donatorImg">Donator Image Url</label>
-                                    <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="donatorImg" id="donatorImage" defaultValue={user?.photoURL} disabled />
-                                </div>
+                                    <div className='flex flex-col gap-2'>
+                                        <label className='text-left' htmlFor="donatorName">Donator Name</label>
+                                        <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="donatorName" id="donatorName" defaultValue={user?.displayName} disabled />
+                                    </div>
+                                    <div className='flex flex-col gap-2'>
+                                        <label className='text-left' htmlFor="donatorEmail">Donator Email</label>
+                                        <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="donatorEmail" id="donatorEmail" defaultValue={user?.email} disabled />
+                                    </div>
+                                    <div className='flex flex-col gap-2'>
+                                        <label className='text-left' htmlFor="donatorImg">Donator Image Url</label>
+                                        <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="donatorImg" id="donatorImage" defaultValue={user?.photoURL} disabled />
+                                    </div>
 
-                                <div className='flex flex-col gap-2 col-span-2'>
-                                    <label className='text-left' htmlFor="notes">Additional Notes</label>
-                                    <textarea className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="notes" id="notes" cols={'2'} rows={'2'} defaultValue={notes} />
-                                </div>
-                                <input className='col-span-2 py-2 bg-[#F97300] text-white text-center' type="submit" value={'Request'} />
-                            </form>
-                            <div className="w-full flex justify-center items-center">
-                                <form method="dialog">
-                                    {/* if there is a button, it will close the modal */}
-                                    <button className="btn">Close</button>
+                                    <div className='flex flex-col gap-2 col-span-2'>
+                                        <label className='text-left' htmlFor="notes">Additional Notes</label>
+                                        <textarea className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="notes" id="notes" cols={'2'} rows={'2'} defaultValue={notes} />
+                                    </div>
+                                    <input className='col-span-2 py-2 bg-[#F97300] text-white text-center' type="submit" value={'Request'} />
                                 </form>
                             </div>
-                        </div>
-                    </dialog>
+                        </dialog>
                     }
                 </div>
             </div>

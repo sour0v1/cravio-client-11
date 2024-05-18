@@ -9,7 +9,6 @@ const AvailableFoods = () => {
     // state
     const [foodData, setFoodData] = useState([]);
     const [copyFood, setCopyFood] = useState([]);
-    const [selectedValue, setSelectedValue] = useState(null);
 
     console.log(copyFood)
     useEffect(() => {
