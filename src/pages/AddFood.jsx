@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import addImage from '../assets/addImage.jpg'
 import { AuthContext } from '../provider/AuthProvider';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const AddFood = () => {
     const { user } = useContext(AuthContext);
@@ -27,6 +28,13 @@ const AddFood = () => {
         axios.post('http://localhost:5000/add-food', food)
             .then(res =>{
                 console.log(res.data);
+                if(res.data.insertedId){
+                    Swal.fire({
+                        title: "Success!",
+                        text: "Your Food Added successfully",
+                        icon: "success",
+                    });
+                }
             })
             .catch(error =>{
                 console.log(error)

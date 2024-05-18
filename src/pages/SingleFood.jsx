@@ -17,7 +17,7 @@ const SingleFood = () => {
         e.preventDefault();
         const notes = e.target.notes.value;
         const foodDetails = {
-            requestDate: dayjs().format('DD/MM/YYYY'),
+            requestDate: dayjs().format('DD-MM-YYYY'),
             donatorName,
             pickupLocation: location,
             expiredDate: date,
@@ -30,8 +30,8 @@ const SingleFood = () => {
                 if (res.data.insertedId) {
 
                     Swal.fire({
-                        title: "Requested",
-                        text: "Your requested submitted successfully",
+                        title: "Request Accepted",
+                        text: "Your request Accepted successfully",
                         icon: "success",
                     });
 
