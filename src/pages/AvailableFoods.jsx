@@ -45,6 +45,13 @@ const AvailableFoods = () => {
             setCopyFood(sortTodayFood);
         }
     }
+    if (!copyFood.length) {
+        return <div className='text-center h-screen w-full flex flex-col justify-center items-center font-poppins gap-2'>
+            <h1 className='text-4xl font-bold'>Sorry!</h1>
+            <p className='font-medium'>No foods available at this moment</p>
+        </div>
+
+    }
     return (
         <div className='max-w-6xl mx-auto my-12'>
             <h1 className='text-center text-2xl font-bold'>Available Foods</h1>

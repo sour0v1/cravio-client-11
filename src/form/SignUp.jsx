@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
-import backImage from '../assets/bg-1.jpg'
+import backImage from '../assets/sign-img.jpg'
 import { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import auth from '../firebase/firebase.config';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
-    const {createUser} = useContext(AuthContext);
-    const handleSignUp = e =>{
+    const { createUser } = useContext(AuthContext);
+    const handleSignUp = e => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
@@ -16,20 +18,22 @@ const SignUp = () => {
         const photoUrl = form.url.value;
         // console.log(name,email, password, photoUrl);
         createUser(email, password)
-            .then(result =>{
+            .then(result => {
                 console.log(result.user);
+                form.reset();
+                toast('Successfully Signed Up!')
                 updateProfile(auth.currentUser, {
-                    displayName : name,
-                    photoURL : photoUrl
+                    displayName: name,
+                    photoURL: photoUrl
                 })
-                    .then(() =>{
+                    .then(() => {
                         console.log('Profile updated');
                     })
                     .catch(error => {
                         console.log(error.message);
                     })
             })
-            .catch(error =>{
+            .catch(error => {
                 console.log(error.message);
             })
     }
@@ -42,11 +46,11 @@ const SignUp = () => {
                 </div>
                 <div className='flex flex-col gap-2 w-2/3'>
                     <label htmlFor="email">Email</label>
-                    <input className='border py-2 px-3 outline-[#FF9130]' type="email" name="email" id="email" autoComplete='username' required/>
+                    <input className='border py-2 px-3 outline-[#FF9130]' type="email" name="email" id="email" autoComplete='username' required />
                 </div>
                 <div className='flex flex-col gap-2 w-2/3'>
                     <label htmlFor="password">Password</label>
-                    <input className='border py-2 px-3 outline-[#FF9130]' type="password" name="password" id="password" autoComplete="current-password" required/>
+                    <input className='border py-2 px-3 outline-[#FF9130]' type="password" name="password" id="password" autoComplete="current-password" required />
                 </div>
                 <div className='flex flex-col gap-2 w-2/3'>
                     <label htmlFor="url">Photo URL</label>
@@ -55,7 +59,7 @@ const SignUp = () => {
                 <input className='w-2/3 my-2 text-white rounded py-2 bg-[#FF9130]' type="submit" value={'Sign Up'} name="" id="" />
                 <p>Already signed up? <Link className='underline' to={'/login'}>Log In</Link></p>
             </form>
-
+        <ToastContainer autoClose = '2000'></ToastContainer>
         </div>
     );
 };

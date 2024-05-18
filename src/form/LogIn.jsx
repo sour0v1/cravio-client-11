@@ -1,10 +1,12 @@
-import backImage from '../assets/bg-1.jpg'
+import backImage from '../assets/logged-image.jpg'
 import { Link } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LogIn = () => {
     const { emailSignIn } = useContext(AuthContext);
@@ -23,6 +25,7 @@ const LogIn = () => {
             .then(result => {
                 console.log(result.user);
                 form.reset();
+                toast('Logged in successfully!');
             })
             .catch(error => {
                 console.log(error.message);
@@ -77,8 +80,9 @@ const LogIn = () => {
                     <p>New here? <Link className='underline' to={'/signup'}>Sign Up</Link></p>
                 </div>
             </div>
-
+            <ToastContainer autoClose = '2000' />
         </div>
+
     );
 };
 

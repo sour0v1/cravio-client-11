@@ -5,8 +5,16 @@ import FoodReqTable from './FoodReqTable';
 const FoodRequest = () => {
     const requestedFoodData = useLoaderData();
     console.log(requestedFoodData);
+    if (!requestedFoodData.length) {
+        return <div className='text-center h-screen w-full flex flex-col justify-center items-center font-poppins gap-2'>
+            <h1 className='text-4xl font-bold'>Sorry!</h1>
+            <p className='font-medium'>You did not request for any food</p>
+        </div>
+
+    }
     return (
-        <div className='max-w-6xl mx-auto'>
+        <div className='max-w-6xl mx-auto my-9'>
+            <h2 className='text-center text-2xl font-bold my-6'>Your Requested Foods</h2>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
                     {/* head */}

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import addImage from '../assets/addImage.jpg'
+import addImage from '../assets/add-img.jpg'
 import { AuthContext } from '../provider/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -42,8 +42,8 @@ const AddFood = () => {
     }
     return (
         <div>
-            <div className='bg-cover bg-center py-9 border-[#FF9130] border-y-2' style={{ backgroundImage: `url(${addImage})` }}>
-                <form onSubmit={handleAddFood} className='bg-[#FFB534] w-2/3 mx-auto px-9 py-16 grid grid-cols-2 gap-3 font-poppins'>
+            <div className='bg-cover bg-center border-[#FF9130] border-y-2' style={{ backgroundImage: `url(${addImage})` }}>
+                <form onSubmit={handleAddFood} className='bg-[#FFB534] lg:w-2/3 mx-auto px-9 py-16 grid grid-cols-2 gap-3 font-poppins bg-opacity-70'>
                     <div className='flex flex-col gap-2'>
                         <label htmlFor="foodName">Food Name</label>
                         <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="foodName" id="foodName" />
