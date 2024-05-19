@@ -5,7 +5,6 @@ import ManageFoodTable from './ManageFoodTable';
 const ManageFood = () => {
     const { user } = useContext(AuthContext);
     const [mayAddedFoods, setMyAddedFoods] = useState([]);
-    console.log(mayAddedFoods);
     useEffect(() => {
         fetch(`http://localhost:5000/manage-food?email=${user?.email}`)
             .then(res => res.json())
@@ -14,6 +13,7 @@ const ManageFood = () => {
                 setMyAddedFoods(data);
             })
     }, [user?.email])
+
     if (!mayAddedFoods.length) {
         return <div className='text-center h-screen w-full flex flex-col justify-center items-center font-poppins gap-2'>
             <h1 className='text-4xl font-bold'>Sorry!</h1>
@@ -25,7 +25,7 @@ const ManageFood = () => {
         <div className='max-w-6xl mx-auto my-9 font-poppins'>
             <h2 className='text-center text-2xl font-bold my-6'>Your Added Foods</h2>
             <div className="overflow-x-auto">
-                <table className="table table-zebra">
+                <table className="table">
                     {/* head */}
                     <thead>
                         <tr>
@@ -38,11 +38,26 @@ const ManageFood = () => {
                             <th></th>
                         </tr>
                     </thead>
-                    {
-                        mayAddedFoods.map((food, idx) => <ManageFoodTable food={food} idx={idx} key={food._id}></ManageFoodTable>)
-                    }
+                    <tbody>
+                        {
+                            mayAddedFoods.map((food, idx) => <ManageFoodTable food={food} idx={idx} key={food._id}></ManageFoodTable>)
+                        }
+                    </tbody>
                 </table>
             </div>
+
+            {/* <div className="grid grid-rows-1 grid-cols-7 justify-center items-center gap-6 font-semibold text-sm my-3">
+                <p></p>
+                <p>Food Image</p>
+                <p>Food Name</p>
+                <p>Pickup Location</p>
+                <p>Expire Date</p>
+                <p></p>
+                <p></p>
+            </div>
+            {
+                mayAddedFoods.map((food, idx) => <ManageFoodTable food={food} idx={idx} key={food._id}></ManageFoodTable>)
+            } */}
         </div>
     );
 };

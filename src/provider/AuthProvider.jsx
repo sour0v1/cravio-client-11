@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, provider);
     }
     // email sign in
-    const emailSignIn = (email, password) =>{
+    const emailSignIn = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
     // get currently signIn user
@@ -37,8 +37,7 @@ const AuthProvider = ({ children }) => {
         createUser,
         githubSignIn,
         emailSignIn,
-        loading
-
+        loading,
     }
     return (
         <AuthContext.Provider value={authInfo}>
