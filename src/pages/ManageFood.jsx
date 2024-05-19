@@ -14,7 +14,7 @@ const ManageFood = () => {
             })
     }, [user?.email])
 
-    if (!mayAddedFoods.length) {
+    if (!mayAddedFoods?.length) {
         return <div className='text-center h-screen w-full flex flex-col justify-center items-center font-poppins gap-2'>
             <h1 className='text-4xl font-bold'>Sorry!</h1>
             <p className='font-medium'>You did not add any food</p>
@@ -40,24 +40,11 @@ const ManageFood = () => {
                     </thead>
                     <tbody>
                         {
-                            mayAddedFoods.map((food, idx) => <ManageFoodTable food={food} idx={idx} key={food._id}></ManageFoodTable>)
+                            mayAddedFoods.map((food, idx) => <ManageFoodTable food={food} idx={idx} setMyAddedFoods = {setMyAddedFoods} mayAddedFoods = {mayAddedFoods} key={food._id}></ManageFoodTable>)
                         }
                     </tbody>
                 </table>
             </div>
-
-            {/* <div className="grid grid-rows-1 grid-cols-7 justify-center items-center gap-6 font-semibold text-sm my-3">
-                <p></p>
-                <p>Food Image</p>
-                <p>Food Name</p>
-                <p>Pickup Location</p>
-                <p>Expire Date</p>
-                <p></p>
-                <p></p>
-            </div>
-            {
-                mayAddedFoods.map((food, idx) => <ManageFoodTable food={food} idx={idx} key={food._id}></ManageFoodTable>)
-            } */}
         </div>
     );
 };

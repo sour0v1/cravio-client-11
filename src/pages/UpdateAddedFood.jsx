@@ -1,8 +1,9 @@
-import React from 'react';
+
 import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const UpdateAddedFood = () => {
+    // console.log(mayAddedFoods)
     const myAddedFoodData = useLoaderData();
     console.log(myAddedFoodData);
     const handleUpdate = e =>{

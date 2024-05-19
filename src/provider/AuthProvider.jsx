@@ -31,6 +31,16 @@ const AuthProvider = ({ children }) => {
         })
         return () => unsubscribe();
     }, [])
+    // 
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/manage-food?email=${user?.email}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data);
+    //             setMyAddedFoods(data);
+    //             setMark(true);
+    //         })
+    // }, [user?.email])
     const authInfo = {
         user,
         googleSignIn,

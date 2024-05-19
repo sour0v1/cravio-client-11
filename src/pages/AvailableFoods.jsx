@@ -60,13 +60,11 @@ const AvailableFoods = () => {
                     <input type='submit' value={'Search'} className='btn' />
                 </form>
                 <div className='flex justify-center items-center gap-3'>
-                    <p>Filter By : </p>
+                    <p>Sorted By Quantity: </p>
 
                     <select onChange={handleSort} className='border-2 border-gray-200 py-2 rounded' name="" id="">
                         <option value="all">All</option>
-                        <option value="today">Today</option>
-                        <option value="week">This Week</option>
-                        <option value="month">This Month</option>
+                        <option value="today">High to Low</option>
                     </select>
                 </div>
             </div>
