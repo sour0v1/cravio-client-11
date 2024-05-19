@@ -20,6 +20,11 @@ const AvailableFoods = () => {
                 setCopyFood([...data]);
             })
     }, [])
+    // sort functionality
+    // const handleSort = e =>{
+    //     const sortValue = e.target.value;
+    //     console.log(sortValue);
+    // }
     // search functionality
     const handleSearch = e => {
         e.preventDefault();
@@ -38,13 +43,20 @@ const AvailableFoods = () => {
         const sortValue = form.value;
         console.log(sortValue);
         // sort by today
-        if (sortValue === 'today') {
-            const sortTodayFood = foodData.filter(food => dayjs(food.date).format('MM-DD') === dayjs().format('MM-DD'))
-            console.log(sortTodayFood);
-            setCopyFood(sortTodayFood);
+        if(sortValue === 'all'){
+            setCopyFood([...foodData]);
+        }
+        
+        if (sortValue === 'order-asc') {
+            const sortedFood = copyFood.sort((a, b) => dayjs(a.date).valueOf() - dayjs(b.date).valueOf());
+            setCopyFood([...sortedFood])
+        }
+        if (sortValue === 'order-desc') {
+            const sortedFood = copyFood.sort((a, b) => dayjs(b.date).valueOf() - dayjs(a.date).valueOf());
+            setCopyFood([...sortedFood]);
         }
     }
-    if (!copyFood.length) {
+    if (!foodData?.length) {
         return <div className='text-center h-screen w-full flex flex-col justify-center items-center font-poppins gap-2'>
             <h1 className='text-4xl font-bold'>Sorry!</h1>
             <p className='font-medium'>No foods available at this moment</p>
@@ -64,7 +76,8 @@ const AvailableFoods = () => {
 
                     <select onChange={handleSort} className='border-2 border-gray-200 py-2 rounded' name="" id="">
                         <option value="all">All</option>
-                        <option value="today">High to Low</option>
+                        <option value="order-desc">High to Low</option>
+                        <option value="order-asc">Low to High</option>
                     </select>
                 </div>
             </div>

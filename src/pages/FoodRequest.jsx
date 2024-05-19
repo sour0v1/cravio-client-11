@@ -33,6 +33,8 @@ const FoodRequest = () => {
                         <tr>
                             <th></th>
                             <th>Donor Name</th>
+                            <th>Food Image</th>
+                            <th>Food Name</th>
                             <th>Pickup Location</th>
                             <th>Request Date</th>
                             <th>Expire Date</th>

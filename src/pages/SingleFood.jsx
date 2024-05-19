@@ -22,7 +22,9 @@ const SingleFood = () => {
             donatorEmail,
             pickupLocation: location,
             expiredDate: date,
-            additionalNotes: notes
+            additionalNotes: notes,
+            foodImage : foodImg,
+            foodName
 
         }
         axios.post('http://localhost:5000/request-food', foodDetails)
