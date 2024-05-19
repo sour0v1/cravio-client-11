@@ -71,13 +71,13 @@ const AvailableFoods = () => {
                     <input className='py-2 pl-3 w-full bg-gray-100' placeholder='Enter food name' type="text" name="search" id="" />
                     <input type='submit' value={'Search'} className='btn' />
                 </form>
-                <div className='flex justify-center items-center gap-3'>
-                    <p>Sorted By Quantity: </p>
+                <div className='flex flex-row lg:flex-col justify-center items-center gap-3 lg:gap-1'>
+                    <p className='font-medium'>Sort Food By Expire Date: </p>
 
                     <select onChange={handleSort} className='border-2 border-gray-200 py-2 rounded' name="" id="">
                         <option value="all">All</option>
-                        <option value="order-desc">High to Low</option>
-                        <option value="order-asc">Low to High</option>
+                        <option value="order-desc">Furthest to Nearest</option>
+                        <option value="order-asc">Nearest to Furthest</option>
                     </select>
                 </div>
             </div>

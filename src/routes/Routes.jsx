@@ -10,12 +10,14 @@ import FoodRequest from "../pages/FoodRequest";
 import PrivateRoute from "./PrivateRoute";
 import SingleFood from "../pages/SingleFood";
 import UpdateAddedFood from "../pages/UpdateAddedFood";
+import ErrorPage from "../ErrorPage";
 
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Root></Root>,
+        errorElement : <ErrorPage></ErrorPage>,
         children : [
             {
                 path : '/',

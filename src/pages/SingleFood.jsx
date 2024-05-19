@@ -24,7 +24,8 @@ const SingleFood = () => {
             expiredDate: date,
             additionalNotes: notes,
             foodImage : foodImg,
-            foodName
+            foodName,
+            email : user.email
 
         }
         axios.post('http://localhost:5000/request-food', foodDetails)
