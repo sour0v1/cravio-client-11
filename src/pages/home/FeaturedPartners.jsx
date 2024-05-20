@@ -10,7 +10,7 @@ import image6 from '../../assets/food-hungry.png'
 const FeaturedPartners = () => {
     return (
         <div className='mb-12 max-w-6xl mx-auto'>
-            <h2 className='text-center text-2xl font-bold my-6'>Featured Partners</h2>
+            <h2 className='text-center text-2xl font-bold my-6'>Featured Food Supporters</h2>
 
             <Marquee className='flex justify-center items-center gap-6 my-9'>
                 <div className='mx-6'>

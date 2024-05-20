@@ -85,7 +85,7 @@ const AddFood = () => {
                         <label htmlFor="notes">Additional Notes</label>
                         <textarea className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="notes" id="notes" cols={'4'} rows={'4'} />
                     </div>
-                    <input className='col-span-2 py-2 bg-[#E72929] text-white' type="submit" value={'Add'} />
+                    <input className='col-span-2 py-2 bg-[#40A578] text-white' type="submit" value={'Add'} />
                 </form>
             </div>
         </div>

@@ -3,6 +3,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import Banner from "./Banner";
 import FeaturedFoods from "./FeaturedFoods";
 import FeaturedPartners from "./FeaturedPartners";
+import Volunteer from "./Volunteer";
 
 const Home = () => {
     const { user } = useContext(AuthContext)
@@ -31,6 +32,7 @@ const Home = () => {
                     }
                 </div>
             </div>
+            <Volunteer></Volunteer>
             <FeaturedPartners></FeaturedPartners>
         </div>
     );
