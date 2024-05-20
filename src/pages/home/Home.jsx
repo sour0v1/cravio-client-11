@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import Banner from "./Banner";
+import FeaturedFoods from "./FeaturedFoods";
 
 const Home = () => {
     const {user} = useContext(AuthContext)
@@ -8,6 +9,7 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
+            <FeaturedFoods></FeaturedFoods>
         </div>
     );
 };
