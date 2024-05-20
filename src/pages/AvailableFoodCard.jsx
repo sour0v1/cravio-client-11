@@ -8,7 +8,7 @@ const AvailableFoodCard = ({ food }) => {
             <img className='w-full h-[200px] rounded-t-md' src={foodImg} alt="" />
             <div className='font-poppins space-y-3 px-4 my-3'>
                 <h2 className='font-semibold'>{foodName}</h2>
-                <p>Food Name : {foodQuantity}</p>
+                <p>Food Quantity : {foodQuantity}</p>
                 <p>Pickup location : {location}</p>
                 <p>Expired date : {date}</p>
                 <p>Donator : </p>

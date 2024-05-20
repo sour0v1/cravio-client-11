@@ -35,7 +35,7 @@ const Banner = () => {
                     {/* <span>Slide 1</span> */}
 
                     <div className='w-full h-full bg-black bg-opacity-50 text-center'>
-                        <h2 className='text-xl lg:text-6xl font-bold text-white flex justify-center items-center h-full opacity-70'>Donate Food <br />Spark Hope Today</h2>
+                        <h2 className='text-xl lg:text-6xl font-bold text-[#FF9800] flex justify-center items-center h-full opacity-90'>Donate Food <br />Spark Hope Today</h2>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@ const Banner = () => {
                 <div className='bg-center bg-cover h-[300px] lg:h-[500px]' style={{ 'backgroundImage': `url(${image2})` }}>
                     {/* <span>Slide 1</span> */}
                     <div className='w-full h-full bg-black bg-opacity-50 text-center'>
-                        <h2 className='text-xl lg:text-6xl font-bold text-white flex justify-center items-center h-full opacity-70'>Join the fight <br />Your food donations save lives!</h2>
+                        <h2 className='text-xl lg:text-6xl font-bold text-[#FF9800] flex justify-center items-center h-full opacity-90'>Join the fight <br />Your food donations save lives!</h2>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@ const Banner = () => {
                 <div className='bg-center bg-cover h-[300px] lg:h-[500px]' style={{ 'backgroundImage': `url(${image3})` }}>
                     {/* <span>Slide 1</span> */}
                     <div className='w-full h-full bg-black bg-opacity-50 text-center'>
-                        <h2 className='text-xl lg:text-6xl font-bold text-white flex justify-center items-center h-full opacity-70'>Support communities <br /> Donate or receive essential food aid</h2>
+                        <h2 className='text-xl lg:text-6xl font-bold text-[#FF9800] flex justify-center items-center h-full opacity-90'>Support communities <br /> Donate or receive essential food aid</h2>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@ const Banner = () => {
                 <div className='bg-center bg-cover h-[300px] lg:h-[500px]' style={{ 'backgroundImage': `url(${image4})` }}>
                     {/* <span>Slide 1</span> */}
                     <div className='w-full h-full bg-black bg-opacity-50 text-center'>
-                        <h2 className='text-xl lg:text-6xl font-bold text-white flex justify-center items-center h-full opacity-70'>End hunger <br />Share food or find help today</h2>
+                        <h2 className='text-xl lg:text-6xl font-bold text-[#FF9800] flex justify-center items-center h-full opacity-90'>End hunger <br />Share food or find help today</h2>
                     </div>
                 </div>
             </div>

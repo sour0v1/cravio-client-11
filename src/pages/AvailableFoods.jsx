@@ -20,12 +20,6 @@ const AvailableFoods = () => {
                 setCopyFood([...data]);
             })
     }, [])
-    // sort functionality
-    // const handleSort = e =>{
-    //     const sortValue = e.target.value;
-    //     console.log(sortValue);
-    // }
-    // search functionality
     const handleSearch = e => {
         e.preventDefault();
         const form = e.target;

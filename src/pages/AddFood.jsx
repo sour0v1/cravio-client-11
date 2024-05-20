@@ -53,8 +53,8 @@ const AddFood = () => {
                         <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="foodImage" id="foodImage" />
                     </div>
                     <div className='flex flex-col gap-2'>
-                        <label htmlFor="foodQuantity">Food Quantity</label>
-                        <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="foodQuantity" id="foodQuantity" />
+                        <label htmlFor="foodQuantity">Food Quantity(no. of person to be served)</label>
+                        <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="number" name="foodQuantity" id="foodQuantity" />
                     </div>
                     <div className='flex flex-col gap-2'>
                         <label htmlFor="location">Pickup Location</label>
