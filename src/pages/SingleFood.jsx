@@ -53,7 +53,7 @@ const SingleFood = () => {
             })
     }
     return (
-        <div className='w-2/3 mx-auto border my-9 font-poppins'>
+        <div className='lg:w-2/3 mx-auto border my-9 font-poppins'>
             <img className='w-full h-[200px] lg:h-[400px]' src={foodImg} alt="food-image" />
             <h2 className='flex justify-end my-1'>Donated By <span className='underline mx-1 font-medium'>  {donatorName}</span></h2>
             <div className='space-y-3 px-3 my-6'>
