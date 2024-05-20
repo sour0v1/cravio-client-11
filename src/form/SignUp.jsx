@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import backImage from '../assets/sign-img.jpg'
 import { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
+    const navigate = useNavigate();
     const { createUser } = useContext(AuthContext);
     const handleSignUp = e => {
         e.preventDefault();
@@ -21,13 +22,14 @@ const SignUp = () => {
             .then(result => {
                 // console.log(result.user);
                 form.reset();
-                toast('Successfully Signed Up!')
+                toast('Successfully Signed Up!');
                 updateProfile(auth.currentUser, {
                     displayName: name,
                     photoURL: photoUrl
                 })
                     .then(() => {
                         // console.log('Profile updated');
+                        navigate('/');
                     })
                     .catch(error => {
                         // console.log(error.message);

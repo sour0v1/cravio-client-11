@@ -1,5 +1,5 @@
 import backImage from '../assets/logged-image.jpg'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { useContext } from 'react';
@@ -9,6 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const LogIn = () => {
+    const navigate = useNavigate();
     const { emailSignIn } = useContext(AuthContext);
     const { googleSignIn, githubSignIn } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
@@ -23,9 +24,10 @@ const LogIn = () => {
 
         emailSignIn(email, password)
             .then(result => {
-                // console.log(result.user);
+                // console.log(result.user);      
                 form.reset();
                 toast('Logged in successfully!');
+                navigate('/');
             })
             .catch(error => {
                 // console.log(error.message);
@@ -37,6 +39,8 @@ const LogIn = () => {
         googleSignIn(googleProvider)
             .then(result => {
                 // console.log(result.user);
+                toast('Logged in successfully!');
+                navigate('/');
             })
             .catch(error => {
                 // console.log(error.message);
@@ -47,6 +51,8 @@ const LogIn = () => {
         githubSignIn(githubProvider)
             .then(result => {
                 // console.log(result.user);
+                toast('Logged in successfully!');
+                navigate('/');
             })
             .catch(error => {
                 // console.log(error.message);
