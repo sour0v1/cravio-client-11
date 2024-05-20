@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import ManageFoodTable from './ManageFoodTable';
 
@@ -9,7 +9,7 @@ const ManageFood = () => {
         fetch(`http://localhost:5000/manage-food?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setMyAddedFoods(data);
             })
     }, [user?.email])

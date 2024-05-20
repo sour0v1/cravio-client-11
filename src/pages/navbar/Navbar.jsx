@@ -19,11 +19,11 @@ const Navbar = () => {
     const handleLogOut = () =>{
         signOut(auth)
             .then(() => {
-                console.log('signed out successfully');
+                // console.log('signed out successfully');
                 navigate('/login');
             })
             .catch(error =>{
-                console.log(error);
+                // console.log(error);
             })
     }
     return (

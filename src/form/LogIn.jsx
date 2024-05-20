@@ -23,12 +23,12 @@ const LogIn = () => {
 
         emailSignIn(email, password)
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
                 form.reset();
                 toast('Logged in successfully!');
             })
             .catch(error => {
-                console.log(error.message);
+                // console.log(error.message);
             })
     }
 
@@ -36,20 +36,20 @@ const LogIn = () => {
     const handleGoogleSignIn = () => {
         googleSignIn(googleProvider)
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
             })
             .catch(error => {
-                console.log(error.message);
+                // console.log(error.message);
             })
     }
     // handle google sign in
     const handlegitHubSignIn = () => {
         githubSignIn(githubProvider)
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
             })
             .catch(error => {
-                console.log(error.message);
+                // console.log(error.message);
             })
     }
     return (

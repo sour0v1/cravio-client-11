@@ -1,21 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import AvailableFoodCard from './AvailableFoodCard';
 import dayjs from 'dayjs';
-import { AuthContext } from '../provider/AuthProvider';
 
 const AvailableFoods = () => {
-    const { loading } = useContext(AuthContext);
     // state
     const [foodData, setFoodData] = useState([]);
     const [copyFood, setCopyFood] = useState([]);
 
-    console.log(copyFood)
+    // console.log(copyFood)
     useEffect(() => {
         fetch(`http://localhost:5000/available-foods?availability=available`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setFoodData(data);
                 setCopyFood([...data]);
             })
@@ -24,9 +21,9 @@ const AvailableFoods = () => {
         e.preventDefault();
         const form = e.target;
         const searchValue = form.search.value;
-        console.log(searchValue);
+        // console.log(searchValue);
         const matchFood = foodData.filter(food => food.foodName.toLowerCase().includes(searchValue.toLowerCase()))
-        console.log(matchFood);
+        // console.log(matchFood);
         matchFood.length == 0 ?
             setCopyFood(null) : setCopyFood(matchFood)
     }
@@ -35,7 +32,7 @@ const AvailableFoods = () => {
         e.preventDefault();
         const form = e.target;
         const sortValue = form.value;
-        console.log(sortValue);
+        // console.log(sortValue);
         // sort by today
         if(sortValue === 'all'){
             setCopyFood([...foodData]);

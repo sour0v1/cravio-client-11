@@ -1,19 +1,17 @@
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../provider/AuthProvider";
+import { useEffect, useState } from "react";
 import Banner from "./Banner";
 import FeaturedFoods from "./FeaturedFoods";
 import FeaturedPartners from "./FeaturedPartners";
 import Volunteer from "./Volunteer";
 
 const Home = () => {
-    const { user } = useContext(AuthContext)
     const [featuredFoods, setFeaturedFoods] = useState([]);
 
     useEffect(() => {
         fetch('http://localhost:5000/available-foods?availability=available')
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setFeaturedFoods(data);
             })
     }, [])

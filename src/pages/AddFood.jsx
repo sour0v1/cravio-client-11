@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import addImage from '../assets/add-img.jpg'
 import { AuthContext } from '../provider/AuthProvider';
 import axios from 'axios';
@@ -23,11 +23,11 @@ const AddFood = () => {
         const food = {
             foodName, foodImg, foodQuantity, location, date, status, donatorName, donatorEmail, donatorImage, notes
         }
-        console.log(food);
+        // console.log(food);
         // post request
         axios.post('http://localhost:5000/add-food', food)
             .then(res =>{
-                console.log(res.data);
+                // console.log(res.data);
                 if(res.data.insertedId){
                     Swal.fire({
                         title: "Success!",
@@ -37,7 +37,7 @@ const AddFood = () => {
                 }
             })
             .catch(error =>{
-                console.log(error)
+                // console.log(error)
             })
     }
     return (

@@ -25,22 +25,13 @@ const AuthProvider = ({ children }) => {
     // get currently signIn user
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            console.log('current signed in user', currentUser);
+            // console.log('current signed in user', currentUser);
             setUser(currentUser);
             setLoading(false);
         })
         return () => unsubscribe();
     }, [])
-    // 
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/manage-food?email=${user?.email}`)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data);
-    //             setMyAddedFoods(data);
-    //             setMark(true);
-    //         })
-    // }, [user?.email])
+    
     const authInfo = {
         user,
         googleSignIn,

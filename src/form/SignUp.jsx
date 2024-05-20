@@ -19,7 +19,7 @@ const SignUp = () => {
         // console.log(name,email, password, photoUrl);
         createUser(email, password)
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
                 form.reset();
                 toast('Successfully Signed Up!')
                 updateProfile(auth.currentUser, {
@@ -27,14 +27,14 @@ const SignUp = () => {
                     photoURL: photoUrl
                 })
                     .then(() => {
-                        console.log('Profile updated');
+                        // console.log('Profile updated');
                     })
                     .catch(error => {
-                        console.log(error.message);
+                        // console.log(error.message);
                     })
             })
             .catch(error => {
-                console.log(error.message);
+                // console.log(error.message);
             })
     }
     return (

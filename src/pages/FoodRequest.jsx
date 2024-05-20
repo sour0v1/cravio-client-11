@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
 import FoodReqTable from './FoodReqTable';
 import { AuthContext } from '../provider/AuthProvider';
 
@@ -11,7 +10,7 @@ const FoodRequest = () => {
         fetch(`http://localhost:5000/requested-food?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setRequestedFoodData(data);
             })
     }, [user?.email])

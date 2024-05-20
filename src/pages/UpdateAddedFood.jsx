@@ -1,11 +1,10 @@
-
 import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const UpdateAddedFood = () => {
     // console.log(mayAddedFoods)
     const myAddedFoodData = useLoaderData();
-    console.log(myAddedFoodData);
+    // console.log(myAddedFoodData);
     const handleUpdate = e =>{
         e.preventDefault();
         const form = e.target;
@@ -28,7 +27,7 @@ const UpdateAddedFood = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if(data.modifiedCount){
                     Swal.fire({
                         title: "Success!",

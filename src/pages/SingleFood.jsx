@@ -30,7 +30,7 @@ const SingleFood = () => {
         }
         axios.post('http://localhost:5000/request-food', foodDetails)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 if (res.data.insertedId) {
 
                     Swal.fire({
@@ -38,22 +38,19 @@ const SingleFood = () => {
                         text: "Your request Accepted successfully",
                         icon: "success",
                     });
-
-                    // alert('requested')
                 }
                 setAdded(false)
             })
             .catch(error => {
-                console.log(error);
+                // console.log(error);
             })
         fetch(`http://localhost:5000/delete-food/${_id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
             })
-        // setAdded(false);
     }
     return (
         <div className='w-2/3 mx-auto border my-9 font-poppins'>

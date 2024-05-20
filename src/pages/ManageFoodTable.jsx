@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -24,7 +23,7 @@ const ManageFoodTable = ({ food, idx, setMyAddedFoods, mayAddedFoods }) => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
+                        // console.log(data);
                         if (data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
