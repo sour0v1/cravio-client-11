@@ -7,6 +7,7 @@ import { AuthContext } from '../provider/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from 'react-helmet-async';
 
 const LogIn = () => {
     const navigate = useNavigate();
@@ -60,6 +61,9 @@ const LogIn = () => {
     }
     return (
         <div className='bg-cover bg-center py-9 flex justify-center items-center border-[#FF9130] border-y-2' style={{ backgroundImage: `url(${backImage})` }}>
+            <Helmet>
+                <title>Cravio | Log In</title>
+            </Helmet>
             <div className='bg-[#F9EFDB] h-fit w-3/4 md:w-2/3 lg:w-1/3 mx-auto py-6 font-poppins rounded shadow-md gap-3'>
 
                 <form onSubmit={handleEmailSignIn} className='w-full flex flex-col justify-center items-center gap-3'>
@@ -86,7 +90,7 @@ const LogIn = () => {
                     <p>New here? <Link className='underline' to={'/signup'}>Sign Up</Link></p>
                 </div>
             </div>
-            <ToastContainer autoClose = '2000' />
+            <ToastContainer autoClose='2000' />
         </div>
 
     );

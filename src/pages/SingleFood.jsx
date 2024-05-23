@@ -5,6 +5,7 @@ import { AuthContext } from '../provider/AuthProvider';
 import axios from 'axios';
 import dayjs from 'dayjs';
 import Swal from 'sweetalert2';
+import { Helmet } from "react-helmet-async";
 
 const SingleFood = () => {
     const [added, setAdded] = useState(true);
@@ -23,9 +24,9 @@ const SingleFood = () => {
             pickupLocation: location,
             expiredDate: date,
             additionalNotes: notes,
-            foodImage : foodImg,
+            foodImage: foodImg,
             foodName,
-            email : user.email
+            email: user.email
 
         }
         axios.post('http://localhost:5000/request-food', foodDetails)
@@ -54,6 +55,9 @@ const SingleFood = () => {
     }
     return (
         <div className='lg:w-2/3 mx-auto border my-9 font-poppins'>
+            <Helmet>
+                <title>Cravio | Food Details</title>
+            </Helmet>
             <img className='w-full h-[200px] lg:h-[400px]' src={foodImg} alt="food-image" />
             <h2 className='flex justify-end my-1'>Donated By <span className='underline mx-1 font-medium'>  {donatorName}</span></h2>
             <div className='space-y-3 px-3 my-6'>

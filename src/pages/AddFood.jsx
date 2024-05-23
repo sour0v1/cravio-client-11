@@ -3,10 +3,11 @@ import addImage from '../assets/add-img.jpg'
 import { AuthContext } from '../provider/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const AddFood = () => {
     const { user } = useContext(AuthContext);
-    const handleAddFood = e =>{
+    const handleAddFood = e => {
         e.preventDefault();
         const form = e.target;
         const foodName = form.foodName.value;
@@ -19,16 +20,16 @@ const AddFood = () => {
         const donatorEmail = form.donatorEmail.value;
         const donatorImage = form.donatorImage.value;
         const notes = form.notes.value;
-        
+
         const food = {
             foodName, foodImg, foodQuantity, location, date, status, donatorName, donatorEmail, donatorImage, notes
         }
         // console.log(food);
         // post request
         axios.post('http://localhost:5000/add-food', food)
-            .then(res =>{
+            .then(res => {
                 // console.log(res.data);
-                if(res.data.insertedId){
+                if (res.data.insertedId) {
                     Swal.fire({
                         title: "Success!",
                         text: "Your Food Added successfully",
@@ -36,12 +37,15 @@ const AddFood = () => {
                     });
                 }
             })
-            .catch(error =>{
+            .catch(error => {
                 // console.log(error)
             })
     }
     return (
         <div>
+            <Helmet>
+                <title>Cravio | Add Food</title>
+            </Helmet>
             <div className='bg-cover bg-center border-[#FF9130] border-y-2' style={{ backgroundImage: `url(${addImage})` }}>
                 <form onSubmit={handleAddFood} className='bg-[#FFB534] lg:w-2/3 mx-auto px-9 py-16 grid grid-cols-2 gap-3 font-poppins bg-opacity-70'>
                     <div className='flex flex-col gap-2'>
@@ -67,18 +71,18 @@ const AddFood = () => {
                     <div className='flex flex-col gap-2'>
                         <label htmlFor="status">Food Status</label>
                         <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="status" id="status" defaultValue={'available'} />
-                    </div>                   
+                    </div>
                     <div className='flex flex-col gap-2'>
                         <label htmlFor="donatorName">Donator Name</label>
-                        <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="donatorName" id="donatorName" defaultValue={user?.displayName} disabled/>
+                        <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="donatorName" id="donatorName" defaultValue={user?.displayName} disabled />
                     </div>
                     <div className='flex flex-col gap-2'>
                         <label htmlFor="donatorEmail">Donator Email</label>
-                        <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="donatorEmail" id="donatorEmail" defaultValue={user?.email} disabled/>
+                        <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="donatorEmail" id="donatorEmail" defaultValue={user?.email} disabled />
                     </div>
                     <div className='flex flex-col gap-2 col-span-2'>
                         <label htmlFor="donatorImg">Donator Image Url</label>
-                        <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="donatorImg" id="donatorImage" defaultValue={user?.photoURL} disabled/>
+                        <input className='py-2 px-3 bg-[#F1F1F1] outline-none' type="text" name="donatorImg" id="donatorImage" defaultValue={user?.photoURL} disabled />
                     </div>
 
                     <div className='flex flex-col gap-2 col-span-2'>

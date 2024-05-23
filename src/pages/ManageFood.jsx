@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import ManageFoodTable from './ManageFoodTable';
+import { Helmet } from 'react-helmet-async';
 
 const ManageFood = () => {
     const { user } = useContext(AuthContext);
@@ -23,6 +24,9 @@ const ManageFood = () => {
     }
     return (
         <div className='max-w-6xl mx-auto my-9 font-poppins'>
+            <Helmet>
+                <title>Cravio | Manage Food</title>
+            </Helmet>
             <h2 className='text-center text-2xl font-bold my-6'>Your Added Foods</h2>
             <div className="overflow-x-auto">
                 <table className="table">
@@ -40,7 +44,7 @@ const ManageFood = () => {
                     </thead>
                     <tbody>
                         {
-                            mayAddedFoods.map((food, idx) => <ManageFoodTable food={food} idx={idx} setMyAddedFoods = {setMyAddedFoods} mayAddedFoods = {mayAddedFoods} key={food._id}></ManageFoodTable>)
+                            mayAddedFoods.map((food, idx) => <ManageFoodTable food={food} idx={idx} setMyAddedFoods={setMyAddedFoods} mayAddedFoods={mayAddedFoods} key={food._id}></ManageFoodTable>)
                         }
                     </tbody>
                 </table>

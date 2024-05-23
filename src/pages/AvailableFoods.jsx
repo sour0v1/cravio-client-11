@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import AvailableFoodCard from './AvailableFoodCard';
 import dayjs from 'dayjs';
+import { Helmet } from 'react-helmet-async';
 
 const AvailableFoods = () => {
     // state
@@ -56,6 +57,9 @@ const AvailableFoods = () => {
     }
     return (
         <div className='max-w-6xl mx-auto my-12'>
+            <Helmet>
+                <title>Cravio | Available Food</title>
+            </Helmet>
             <h1 className='text-center text-2xl font-bold'>Available Foods</h1>
             <div className='mx-6 lg:mx-0 flex flex-col lg:flex-row justify-between gap-3 items-center my-6 font-poppins'>
                 <form onSubmit={handleSearch} className='flex justify-center items-center gap-3 w-3/4 lg:w-2/3'>

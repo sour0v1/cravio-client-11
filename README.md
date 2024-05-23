@@ -4,7 +4,6 @@
 - Food Request
 - Manage Donations
 - Search and sort functionality
-- 
 ### Website Characteristics : 
 - Simple and easy to use
 - Designed to be accessible for everyone

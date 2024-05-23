@@ -6,6 +6,7 @@ import { updateProfile } from 'firebase/auth';
 import auth from '../firebase/firebase.config';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from 'react-helmet-async';
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -41,6 +42,9 @@ const SignUp = () => {
     }
     return (
         <div className='bg-cover bg-center py-9 border-[#FF9130] border-y-2' style={{ backgroundImage: `url(${backImage})` }}>
+            <Helmet>
+                <title>Cravio | Sign Up</title>
+            </Helmet>
             <form onSubmit={handleSignUp} className='bg-[#F9EFDB] h-full w-3/4 md:w-2/3 lg:w-1/3 mx-auto flex flex-col justify-center items-center py-6 font-poppins rounded shadow-md gap-3'>
                 <div className='flex flex-col gap-2 w-2/3'>
                     <label htmlFor="name">Name</label>

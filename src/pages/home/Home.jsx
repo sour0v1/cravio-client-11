@@ -3,6 +3,7 @@ import Banner from "./Banner";
 import FeaturedFoods from "./FeaturedFoods";
 import FeaturedPartners from "./FeaturedPartners";
 import Volunteer from "./Volunteer";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
     const [featuredFoods, setFeaturedFoods] = useState([]);
@@ -20,6 +21,9 @@ const Home = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Cravio | Home</title>
+            </Helmet>
             <Banner></Banner>
             {/* <FeaturedFoods></FeaturedFoods> */}
             <div className="my-12">

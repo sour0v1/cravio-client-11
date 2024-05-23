@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import FoodReqTable from './FoodReqTable';
 import { AuthContext } from '../provider/AuthProvider';
+import { Helmet } from 'react-helmet-async';
 
 const FoodRequest = () => {
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [requestedFoodData, setRequestedFoodData] = useState([]);
     // const requestedFoodData = useLoaderData();
     useEffect(() => {
@@ -24,6 +25,9 @@ const FoodRequest = () => {
     }
     return (
         <div className='max-w-6xl mx-auto my-9 font-poppins'>
+            <Helmet>
+                <title>Cravio | Request Food</title>
+            </Helmet>
             <h2 className='text-center text-2xl font-bold my-6'>Your Requested Foods</h2>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
@@ -40,7 +44,7 @@ const FoodRequest = () => {
                         </tr>
                     </thead>
                     {
-                        requestedFoodData.map((food, idx) => <FoodReqTable food = {food} idx={idx} key={food._id}></FoodReqTable>)
+                        requestedFoodData.map((food, idx) => <FoodReqTable food={food} idx={idx} key={food._id}></FoodReqTable>)
                     }
                 </table>
             </div>
