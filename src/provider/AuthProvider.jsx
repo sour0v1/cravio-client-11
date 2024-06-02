@@ -26,17 +26,17 @@ const AuthProvider = ({ children }) => {
     // get currently signIn user
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            console.log('current signed in user', currentUser);
+            // console.log('current signed in user', currentUser);
             const email = currentUser?.email || user?.email;
             const userEmail = { email };
             setUser(currentUser);
             // step 2
             if (currentUser) {
-                axios.post('http://localhost:5000/jwt', userEmail, {
+                axios.post('https://cravio-server.vercel.app/jwt', userEmail, {
                     withCredentials : true
                 })
                     .then(res => {
-                        console.log(res.data)
+                        // console.log(res.data)
                         setLoading(false);
                     })
                     .catch(error => {
@@ -45,11 +45,11 @@ const AuthProvider = ({ children }) => {
             }
             // step 4
             else{
-                axios.post('http://localhost:5000/remove-token', userEmail, {
+                axios.post('https://cravio-server.vercel.app/remove-token', userEmail, {
                     withCredentials : true
                 })
                     .then(res => {
-                        console.log(res.data);
+                        // console.log(res.data);
                         setLoading(false);
                     })
                     .catch(error => {

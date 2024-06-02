@@ -10,7 +10,7 @@ const AvailableFoods = () => {
 
     // console.log(copyFood)
     useEffect(() => {
-        fetch(`http://localhost:5000/available-foods?availability=available`)
+        fetch(`https://cravio-server.vercel.app/available-foods?availability=available`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);

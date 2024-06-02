@@ -11,11 +11,11 @@ const ManageFood = () => {
     const { data: foods = [], refetch } = useQuery({
         queryKey: ['delete'],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/manage-food?email=${user?.email}`, { withCredentials: true })
+            const res = await axios.get(`https://cravio-server.vercel.app/manage-food?email=${user?.email}`, { withCredentials: true })
             return res.data;
         }
     })
-    console.log(foods)
+    // console.log(foods)
     if (!foods?.length) {
         return <div className='text-center h-screen w-full flex flex-col justify-center items-center font-poppins gap-2'>
             <h1 className='text-4xl font-bold'>Sorry!</h1>

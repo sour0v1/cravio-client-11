@@ -29,7 +29,7 @@ const SingleFood = () => {
             email: user.email
 
         }
-        axios.post('http://localhost:5000/request-food', foodDetails, {
+        axios.post('https://cravio-server.vercel.app/request-food', foodDetails, {
             withCredentials : true
         })
             .then(res => {
@@ -47,7 +47,7 @@ const SingleFood = () => {
             .catch(error => {
                 // console.log(error);
             })
-        fetch(`http://localhost:5000/delete-food/${_id}`, {
+        fetch(`https://cravio-server.vercel.app/delete-food/${_id}`, {
             method: 'DELETE',
             credentials : 'include'
         })

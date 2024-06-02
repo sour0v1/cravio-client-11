@@ -9,7 +9,7 @@ const FoodRequest = () => {
     // const requestedFoodData = useLoaderData();
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/requested-food?email=${user?.email}`, {
+            fetch(`https://cravio-server.vercel.app/requested-food?email=${user?.email}`, {
                 // method : 'GET',
                 method: 'GET',
                 headers: {

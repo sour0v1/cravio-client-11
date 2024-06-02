@@ -46,17 +46,17 @@ const router = createBrowserRouter([
             {
                 path : '/food-request',
                 element : <PrivateRoute><FoodRequest></FoodRequest></PrivateRoute>,
-                // loader : () => fetch('http://localhost:5000/requested-food')
+                // loader : () => fetch('https://cravio-server.vercel.app/requested-food')
             },
             {
                 path : '/food/:id',
                 element : <SingleFood></SingleFood>,
-                loader : ({params}) => fetch(`http://localhost:5000/food/${params.id}`)
+                loader : ({params}) => fetch(`https://cravio-server.vercel.app/food/${params.id}`)
             },
             {
                 path : '/update/:id',
                 element : <UpdateAddedFood></UpdateAddedFood>,
-                loader : ({params}) => fetch(`http://localhost:5000/food/${params.id}`)
+                loader : ({params}) => fetch(`https://cravio-server.vercel.app/food/${params.id}`)
             }
         ]
     },

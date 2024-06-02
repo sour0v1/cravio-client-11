@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 const ManageFoodTable = ({ food, refetch, idx }) => {
     const { foodName, foodImg, foodQuantity, location, date, status, donatorName, donatorEmail, donatorImage, notes, _id } = food;
-    console.log(food)
+    // console.log(food)
     const handleDelete = id => {
         Swal.fire({
             title: "Are you sure?",
@@ -18,7 +18,7 @@ const ManageFoodTable = ({ food, refetch, idx }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/delete-food/${id}`, {
+                fetch(`https://cravio-server.vercel.app/delete-food/${id}`, {
                     method: 'DELETE',
                     credentials : 'include'
                 })
@@ -47,7 +47,7 @@ const ManageFoodTable = ({ food, refetch, idx }) => {
             <tr>
                 <th>{idx + 1}</th>
                 <td><img className="w-20 h-16" src={foodImg} alt="food-image" /></td>
-                <td>hello{foodName}</td>
+                <td>{foodName}</td>
                 <td>{location}</td>
                 <td>{date}</td>
                 <td>

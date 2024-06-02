@@ -18,7 +18,7 @@ const UpdateAddedFood = () => {
         const food ={
             fname, fImage, fQuantity, pLocation, eDate, note, id
         }
-        fetch('http://localhost:5000/food/update', {
+        fetch('https://cravio-server.vercel.app/food/update', {
             method : 'PUT',
             headers : {
                 'Content-Type' : 'application/json'

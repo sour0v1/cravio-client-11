@@ -22,7 +22,7 @@ const Navbar = () => {
         signOut(auth)
             .then(() => {
                 // console.log('signed out successfully');
-                // axios.post('http://localhost:5000/remove-token', user?.email, {withCredentials : true})
+                // axios.post('https://cravio-server.vercel.app/remove-token', user?.email, {withCredentials : true})
                 //     .then(res => {
                 //         console.log(res.data)
                 //     })
@@ -38,7 +38,7 @@ const Navbar = () => {
     return (
         <div className="flex justify-between items-center bg-[#FECDA6] py-6 px-6 relative lg:sticky top-0 z-50">
             <h2 className="font-poppins text-4xl font-bold">Cravio</h2>
-            <div id="nav" className={`flex flex-col lg:flex-row lg:justify-center lg:items-center pt-8 absolute lg:static bg-[#FECDA6] top-0 ${open ? 'right-[600px]' : 'left-[0px]'} h-screen lg:h-auto w-1/2 lg:w-auto px-6 lg:p-0 gap-6 text-[#112A46] font-poppins`}>
+            <div id="nav" className={`flex flex-col lg:flex-row lg:justify-center lg:items-center pt-8 absolute lg:static bg-[#FECDA6] top-0 ${open ? 'right-[600px] md:right-[1000px]' : 'left-[0px]'} h-screen lg:h-auto w-1/2 md:w-1/3 lg:w-auto px-6 lg:p-0 gap-6 text-[#112A46] font-poppins`}>
                 <NavLink to={'/'}>Home</NavLink>
                 <NavLink to={'/available-foods'}>Available Foods</NavLink>
                 <NavLink to={'/add-food'}>Add Food</NavLink>

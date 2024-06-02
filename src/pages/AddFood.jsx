@@ -26,7 +26,7 @@ const AddFood = () => {
         }
         // console.log(food);
         // post request
-        axios.post('http://localhost:5000/add-food', food, {
+        axios.post('https://cravio-server.vercel.app/add-food', food, {
             withCredentials : true
         })
             .then(res => {
