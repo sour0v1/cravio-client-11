@@ -4,11 +4,9 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
-const ManageFoodTable = ({ food, idx, setMyAddedFoods, mayAddedFoods }) => {
+const ManageFoodTable = ({ food, refetch, idx }) => {
     const { foodName, foodImg, foodQuantity, location, date, status, donatorName, donatorEmail, donatorImage, notes, _id } = food;
-
-    const filterAddedFoods = mayAddedFoods.filter(food => food._id !== _id);
-    // console.log(food);
+    console.log(food)
     const handleDelete = id => {
         Swal.fire({
             title: "Are you sure?",
@@ -33,7 +31,7 @@ const ManageFoodTable = ({ food, idx, setMyAddedFoods, mayAddedFoods }) => {
                                 text: "Your Food Data has been deleted.",
                                 icon: "success"
                             });
-                            setMyAddedFoods(filterAddedFoods);
+                            refetch();
                         }
 
                     })
@@ -49,7 +47,7 @@ const ManageFoodTable = ({ food, idx, setMyAddedFoods, mayAddedFoods }) => {
             <tr>
                 <th>{idx + 1}</th>
                 <td><img className="w-20 h-16" src={foodImg} alt="food-image" /></td>
-                <td>{foodName}</td>
+                <td>hello{foodName}</td>
                 <td>{location}</td>
                 <td>{date}</td>
                 <td>

@@ -1,25 +1,22 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import ManageFoodTable from './ManageFoodTable';
 import { Helmet } from 'react-helmet-async';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 
 const ManageFood = () => {
     const { user } = useContext(AuthContext);
-    const [mayAddedFoods, setMyAddedFoods] = useState([]);
-    useEffect(() => {
-        if (user?.email) {
-            fetch(`http://localhost:5000/manage-food?email=${user?.email}`, {
-                credentials : 'include'
-            })
-                .then(res => res.json())
-                .then(data => {
-                    // console.log(data);
-                    setMyAddedFoods(data);
-                })
+    // const [mayAddedFoods, setMyAddedFoods] = useState([]);
+    const { data: foods = [], refetch } = useQuery({
+        queryKey: ['delete'],
+        queryFn: async () => {
+            const res = await axios.get(`http://localhost:5000/manage-food?email=${user?.email}`, { withCredentials: true })
+            return res.data;
         }
-    }, [user?.email])
-
-    if (!mayAddedFoods?.length) {
+    })
+    console.log(foods)
+    if (!foods?.length) {
         return <div className='text-center h-screen w-full flex flex-col justify-center items-center font-poppins gap-2'>
             <h1 className='text-4xl font-bold'>Sorry!</h1>
             <p className='font-medium'>You did not add any food</p>
@@ -48,7 +45,7 @@ const ManageFood = () => {
                     </thead>
                     <tbody>
                         {
-                            mayAddedFoods.map((food, idx) => <ManageFoodTable food={food} idx={idx} setMyAddedFoods={setMyAddedFoods} mayAddedFoods={mayAddedFoods} key={food._id}></ManageFoodTable>)
+                            foods.map((food, idx) => <ManageFoodTable food={food} idx={idx} refetch={refetch} key={food._id}></ManageFoodTable>)
                         }
                     </tbody>
                 </table>
