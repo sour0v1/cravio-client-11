@@ -7,12 +7,16 @@ const ManageFood = () => {
     const { user } = useContext(AuthContext);
     const [mayAddedFoods, setMyAddedFoods] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/manage-food?email=${user?.email}`)
-            .then(res => res.json())
-            .then(data => {
-                // console.log(data);
-                setMyAddedFoods(data);
+        if (user?.email) {
+            fetch(`http://localhost:5000/manage-food?email=${user?.email}`, {
+                credentials : 'include'
             })
+                .then(res => res.json())
+                .then(data => {
+                    // console.log(data);
+                    setMyAddedFoods(data);
+                })
+        }
     }, [user?.email])
 
     if (!mayAddedFoods?.length) {

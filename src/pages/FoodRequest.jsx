@@ -8,12 +8,21 @@ const FoodRequest = () => {
     const [requestedFoodData, setRequestedFoodData] = useState([]);
     // const requestedFoodData = useLoaderData();
     useEffect(() => {
-        fetch(`http://localhost:5000/requested-food?email=${user?.email}`)
-            .then(res => res.json())
-            .then(data => {
-                // console.log(data);
-                setRequestedFoodData(data);
+        if (user?.email) {
+            fetch(`http://localhost:5000/requested-food?email=${user?.email}`, {
+                // method : 'GET',
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include'
             })
+                .then(res => res.json())
+                .then(data => {
+                    // console.log(data);
+                    setRequestedFoodData(data);
+                })
+        }
     }, [user?.email])
     // console.log(requestedFoodData);
     if (!requestedFoodData.length) {

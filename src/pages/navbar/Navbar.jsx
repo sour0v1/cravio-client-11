@@ -6,6 +6,8 @@ import { RxCross1 } from "react-icons/rx";
 import { AuthContext } from "../../provider/AuthProvider";
 import { signOut } from "firebase/auth";
 import auth from "../../firebase/firebase.config";
+import axios from "axios";
+// import axios from "axios";
 // ${!open ? 'left-[400px]': 'left-[800px]'}
 const Navbar = () => {
     const { user } = useContext(AuthContext);
@@ -16,13 +18,20 @@ const Navbar = () => {
         setOpen(!open);
     }
     // handle logout
-    const handleLogOut = () =>{
+    const handleLogOut = () => {
         signOut(auth)
             .then(() => {
                 // console.log('signed out successfully');
+                // axios.post('http://localhost:5000/remove-token', user?.email, {withCredentials : true})
+                //     .then(res => {
+                //         console.log(res.data)
+                //     })
+                //     .catch(error => {
+                //         console.log(error);
+                //     })
                 navigate('/login');
             })
-            .catch(error =>{
+            .catch(error => {
                 // console.log(error);
             })
     }

@@ -1,3 +1,5 @@
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -19,7 +21,8 @@ const ManageFoodTable = ({ food, idx, setMyAddedFoods, mayAddedFoods }) => {
         }).then((result) => {
             if (result.isConfirmed) {
                 fetch(`http://localhost:5000/delete-food/${id}`, {
-                    method: 'DELETE'
+                    method: 'DELETE',
+                    credentials : 'include'
                 })
                     .then(res => res.json())
                     .then(data => {

@@ -1,6 +1,7 @@
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../firebase/firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
@@ -25,12 +26,41 @@ const AuthProvider = ({ children }) => {
     // get currently signIn user
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            // console.log('current signed in user', currentUser);
+            console.log('current signed in user', currentUser);
+            const email = currentUser?.email || user?.email;
+            const userEmail = { email };
             setUser(currentUser);
-            setLoading(false);
+            // step 2
+            if (currentUser) {
+                axios.post('http://localhost:5000/jwt', userEmail, {
+                    withCredentials : true
+                })
+                    .then(res => {
+                        console.log(res.data)
+                        setLoading(false);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+            }
+            // step 4
+            else{
+                axios.post('http://localhost:5000/remove-token', userEmail, {
+                    withCredentials : true
+                })
+                    .then(res => {
+                        console.log(res.data);
+                        setLoading(false);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+            }
         })
-        return () => unsubscribe();
-    }, [])
+        return () => {
+            return unsubscribe();
+        }
+    }, [user?.email])
     
     const authInfo = {
         user,

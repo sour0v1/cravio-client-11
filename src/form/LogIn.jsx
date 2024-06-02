@@ -8,6 +8,7 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from 'react-helmet-async';
+import axios from 'axios';
 
 const LogIn = () => {
     const navigate = useNavigate();
@@ -25,7 +26,7 @@ const LogIn = () => {
 
         emailSignIn(email, password)
             .then(result => {
-                // console.log(result.user);      
+                // console.log(result.user);
                 form.reset();
                 toast('Logged in successfully!');
                 navigate('/');

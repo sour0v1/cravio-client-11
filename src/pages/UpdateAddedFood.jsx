@@ -23,7 +23,8 @@ const UpdateAddedFood = () => {
             headers : {
                 'Content-Type' : 'application/json'
             },
-            body : JSON.stringify(food)
+            body : JSON.stringify(food),
+            credentials : 'include'
         })
             .then(res => res.json())
             .then(data => {

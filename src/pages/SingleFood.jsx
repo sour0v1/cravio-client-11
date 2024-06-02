@@ -29,7 +29,9 @@ const SingleFood = () => {
             email: user.email
 
         }
-        axios.post('http://localhost:5000/request-food', foodDetails)
+        axios.post('http://localhost:5000/request-food', foodDetails, {
+            withCredentials : true
+        })
             .then(res => {
                 // console.log(res.data);
                 if (res.data.insertedId) {
@@ -46,7 +48,8 @@ const SingleFood = () => {
                 // console.log(error);
             })
         fetch(`http://localhost:5000/delete-food/${_id}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            credentials : 'include'
         })
             .then(res => res.json())
             .then(data => {
