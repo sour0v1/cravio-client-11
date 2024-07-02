@@ -10,3 +10,6 @@
 - The website loads quickly
 - Mobile responsive
 - Cross-browser compatibility
+
+### Technology used in this project : ###
+HTML, CSS, Tailwind CSS, React, firebase, Axios, node, express, MongoDB
